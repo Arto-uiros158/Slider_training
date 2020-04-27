@@ -1,0 +1,147 @@
+//<Подключаем шрифты>========================================
+
+//</Подключаем шрифты>=======================================
+
+//<Шрифт по умолчанию>=======================================
+$fontfamily: "";
+//</Шрифт по умолчанию>======================================
+
+//<ПЕРЕМЕННЫЕ для брейкпоинтов>==============================
+$minwidth: 320px;
+$mw: 1170px;
+$md1: $mw + 12px;
+$md2: 992px;
+$md3: 768px;
+$md4: 480px;
+//</ПЕРЕМЕННЫЕ>==============================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================
+@import "nullstyle.scss";
+
+body {
+	color: #000;
+	font-size: 14px;
+	background-color: #1F282C;
+}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>==============================
+
+//<ОБОЛОЧКА>=================================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+ 		display: block;
+	} /*позволяет написать отдельный код для IE10+*/
+}
+//</ОБОЛОЧКА>================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================
+
+//<SLIDER>===================================================
+/* Ограничивающая оболочка */
+.slick-list {
+	overflow: hidden;
+}
+/* Лента слайдов */
+.slick-track {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/* Слайд */
+.slick-slide{
+	img {
+		// max-width: 400px;
+		max-height: 400px;
+		@media (max-width: $md3) {
+			max-height: 250px;
+		}
+	}
+}
+/* Конкретный слайдер */
+.slider {
+	position: relative;
+	min-width: 0;
+	margin: 0 20px;
+	padding: 0px 50px;
+	@media (max-width: $md3) {
+		margin: 0px 15px;
+		padding: 0px 40px;
+	}
+	@media (max-width: $md4) {
+		margin: 0;
+		padding: 0;
+	}
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+ 		margin: 50px 20px;
+	} /*позволяет написать отдельный код для IE10+*/
+	.slick-arrow {
+		position: absolute;
+		z-index: 5;
+		top: 50%;
+		margin: -45px 0px 0px 0px; /* выравниваем стрелки по центру ("возвращаем" половину высоты стрелки и блока с точками) */
+		width: 30px;
+		height: 60px;
+		font-size: 0;
+		@media (max-width: $md4) {
+			width: 0;
+		}
+		&.slick-prev {
+			left: 0;
+			background: url('../img/icons/arrow_left.svg') 0 50% no-repeat;
+			background-size: 100%;
+			@media (max-width: $md3) {
+				background-size: 75%;
+			}
+		}
+		&.slick-next {
+			right: 0;
+			background: url('../img/icons/arrow_right.svg') 100% 50% no-repeat;
+			background-size: 100%;
+			@media (max-width: $md3) {
+				background-size: 75%;
+			}
+		}
+		&.slick-disabled {
+			opacity: 0.2;
+		}
+	}	
+	.slick-dots {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		li {
+			margin: 20px 10px 15px 10px;
+			@media (max-width: $md3) {
+				margin: 10px 10px 10px 10px;
+			}
+			button {
+				font-size: 0;
+				width: 10px;
+				height: 10px;
+				background-color: #fff;
+				border-radius: 50%;
+			}
+			&.slick-active {
+				button {
+					background-color: transparent;
+					border: 1px solid #fff;
+				}
+			}
+		}
+	}
+	&__item {
+		text-align: center;
+		opacity: 0.3;
+		transition: all 0.5s ease 0s;
+		&.slick-center {
+			opacity: 1;
+		}
+	}
+}
+
+//</ОСНОВНАЯ СЕТКА>==========================================
